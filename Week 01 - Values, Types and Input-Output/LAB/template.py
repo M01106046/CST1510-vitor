@@ -2,9 +2,9 @@
 RECORD CHECK  -  my version
 ===========================
 
-Name  :
-Lane  :  AI / Cyber / IT      (delete two)
-Date  :
+Name  : Vitor Gomes
+Lane  :  AI 
+Date  : 24/09/2026
 
 Run it:   python template.py
 
@@ -21,9 +21,9 @@ Delete these instructions as you replace them with your code.
 #
 #    Remember: input() always gives back text.
 
-label = ""      # : replace with an input() call
-first = 0.0     # : replace with an input() call, converted
-second = 0.0    # : replace with an input() call, converted
+label = input("Type the label: ")      # : replace with an input() call
+first = float(input("Type the used number: "))     # : replace with an input() call, converted
+second = float(input("Type the total number: "))    # : replace with an input() call, converted
 
 
 # ================================================================== PROCESS
@@ -34,8 +34,8 @@ second = 0.0    # : replace with an input() call, converted
 #
 #    Do not type the answers. Calculate them.
 
-difference = 0.0   # 
-percent = 0.0      # 
+difference = second - first
+percent = (first / second) * 100
 
 
 # =================================================================== OUTPUT
@@ -53,7 +53,10 @@ print("=" * 34)
 print(f"  RECORD CHECK  -  {label}")
 print("=" * 34)
 
-# : your report lines go here
+print(f"  Used        : {first:10.2f}")
+print(f"  Total       : {second:>10.2f}")
+print(f"  Free        : {difference:>10.2f}")
+print(f"  Percent used: {percent:>10.2f} %")
 
 print("=" * 34)
 
