@@ -19,24 +19,32 @@ Delete these instructions as you replace them with your code.
 #    - the second is a NUMBER (use float(), not int())
 #    - the third  is a NUMBER (use float(), not int())
 
-label = ""      # replace with an input() call
-value = 0.0     # replace with an input() call, converted with float()
-limit = 0.0     # replace with an input() call, converted with float()
+
+over_count = 0
+while True:
+    label = input("Type the label: ")      # : replace with an input() call
+    if label == "quit":
+            break
+    
+    first = float(input("Type the used number: "))     # : replace with an input() call, converted
+    second = float(input("Type the total number: "))    # : replace with an input() call, converted
 
 
 # ================================================================== PROCESS
 # 2. Work out the difference and the percentage.       [Typical and above]
 
-difference = 0.0   # replace with your calculation
-percent = 0.0       # replace with your calculation
+    difference = second - first
+    percent = (first / second) * 100 if second != 0 else 0
+
 # 3. Decide a status and store it in a variable called status.
 #
 #    Threshold : if / else        -> "OVER LIMIT" or "OK"
 #    Typical   : if / elif / else -> "OVER LIMIT" (100% or more),
 #                                     "WARNING" (90% or more), otherwise "OK"
 
-status = ""   # replace with your if / else (or if / elif / else)
-
+    status = "OVER LIMIT" if percent >= 100 else "WARNING" if percent >= 90 else "OK"
+    if status == "OVER LIMIT":
+        over_count += 1
 
 # =================================================================== OUTPUT
 # 4. Print the report.
@@ -48,15 +56,20 @@ status = ""   # replace with your if / else (or if / elif / else)
 #                Keep count of how many came back OVER LIMIT and print that
 #                once, after the loop ends.
 
-print()
-print("=" * 34)
-print(f"  RECORD CHECK  -  {label}")
-print("=" * 34)
 
-# your report lines go here
+    print()
+    print("=" * 34)
+    print(f"  RECORD CHECK  -  {label}")
+    print("=" * 34)
 
-print("=" * 34)
+    print(f"  Used        : {first:10.2f}")
+    print(f"  Total       : {second:>10.2f}")
+    print(f"  Free        : {difference:>10.2f}")
+    print(f"  Percent used: {percent:>10.2f} %")
+    print(f"  Status      : {status:>10}")
+    print("=" * 34)
 
+print(f"\nRecords OVER LIMIT: {over_count}")
 
 # ==========================================================================
 # 5. Before you finish:
