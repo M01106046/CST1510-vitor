@@ -26,7 +26,14 @@ Delete these instructions as you replace them with your code.
 #
 #    Give each function a one-line docstring saying what it does.
 
-# your function(s) go here
+def status_of(percent):
+    if percent >= 100:
+        return "OVER LIMIT"
+    elif percent >= 90:
+        return "WARNING"
+    else:
+        return "OK"
+    
 
 
 # ==================================================================== INPUT
@@ -36,9 +43,9 @@ Delete these instructions as you replace them with your code.
 #    - the second is a NUMBER (use float(), not int())
 #    - the third  is a NUMBER (use float(), not int())
 
-label = ""      # replace with an input() call
-value = 0.0     # replace with an input() call, converted
-limit = 0.0     # replace with an input() call, converted
+label = input("Label: ")      # replace with an input() call
+value = float(input("Type the value number: "))     # replace with an input() call, converted
+limit = float(input("Type the limit number: "))    # replace with an input() call, converted
 
 
 # ================================================================== PROCESS
@@ -48,9 +55,9 @@ limit = 0.0     # replace with an input() call, converted
 #                difference and percentage inline, not in a function.
 #    Typical   : call check() to get the difference and percentage instead.
 
-difference = 0.0   # replace with your code
-percent = 0.0       # replace with your code
-status = ""          # replace with your code
+difference = limit - value   # replace with your code
+percent = (value / limit) * 100     # replace with your code
+status = status_of(percent)          # replace with your code
 
 
 # =================================================================== OUTPUT
@@ -69,7 +76,12 @@ print("=" * 34)
 print(f"  RECORD CHECK  -  {label}")
 print("=" * 34)
 
-# your report lines go here
+
+print(f"  Used        : {value:10.2f}")
+print(f"  Total       : {limit:>10.2f}")
+print(f"  Free        : {difference:>10.2f}")
+print(f"  Percent     : {percent:>10.2f} %")
+print(f"  Status      : {status:>10}")
 
 print("=" * 34)
 
