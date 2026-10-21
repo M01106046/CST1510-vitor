@@ -38,7 +38,7 @@ class Record:
 #                lines from a file and returns a list of Record objects. Make
 #                your own data file, one record per line.
 
-records = []   # replace with your code
+records = []
 r1 = Record("R-001", 87, 120)
 r2 = Record("R-002", 70, 120)
 
