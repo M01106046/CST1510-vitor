@@ -2,9 +2,9 @@
 RECORD CHECK  -  my version
 ===========================
 
-Name  :
-Lane  :  AI / Cyber / IT      (delete two)
-Date  :
+Name  :  Vitor Gomes
+Lane  :  AI
+Date  :  21/10/2026
 
 Run it:   python template.py
 
@@ -23,8 +23,11 @@ Delete these instructions as you replace them with your code.
 #    Excellent : also add over_limit_count as a class-level running total -
 #                see the note below.
 
-# your class goes here
-
+class Record:
+    def __init__(self, label, value, limit):
+        self.label = label
+        self.value = value
+        self.limit = limit
 
 # ==================================================================== RECORDS
 # 2. Create your records.
@@ -36,6 +39,8 @@ Delete these instructions as you replace them with your code.
 #                your own data file, one record per line.
 
 records = []   # replace with your code
+r1 = Record("R-001", 87, 120)
+r2 = Record("R-002", 70, 120)
 
 
 # ==================================================================== OUTPUT
