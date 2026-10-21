@@ -55,7 +55,7 @@ for record in records:
     print(f"  RECORD CHECK  -  {record.label}")
     print("=" * 34)
 
-    # your report lines go here
+    print(f" {record.value}, {record.limit}")
 
     print("=" * 34)
 
