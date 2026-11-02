@@ -2,9 +2,9 @@
 RECORD CHECK  -  my version
 ===========================
 
-Name  :
-Lane  :  AI / Cyber / IT      (delete two)
-Date  :
+Name  :  Vitor Gomes
+Lane  :  AI / Data Science
+Date  :  
 
 Run it:   python template.py
 
@@ -19,7 +19,28 @@ Delete these instructions as you replace them with your code.
 #    nothing outside it should contain a print() of its own. Give each a
 #    one-line docstring.
 
-# your function(s) go here
+def check_record(value, limit):
+    """Return the difference, percent and status for one value against its limit."""
+    difference = value - limit
+    percent = (value / limit) * 100
+    if percent >= 100:
+        status = "OVER LIMIT"
+    elif percent >= 80:
+        status = "WARNING"
+    else:
+        status = "OK"
+    return difference, percent, status
+
+
+def print_report(label, value, limit, difference, percent, status):
+    """Print the full report for one record."""
+    print(f"Record     : {label}")
+    print(f"Value      : {value}")
+    print(f"Limit      : {limit}")
+    print(f"Difference : {difference:+.1f}")
+    print(f"Percent    : {percent:.1f}%")
+    print(f"Status     : {status}")
+    print("-" * 30)
 
 
 # ====================================================================== STORE
@@ -33,7 +54,12 @@ Delete these instructions as you replace them with your code.
 #    Excellent : also write the results out to a new file (one line per
 #                record: label, status), as well as printing them.
 
-records = []   # replace with your code
+records = [
+    {"label": "survey_2026", "value": 1187.0, "limit": 1200.0},
+    {"label": "sales_q3", "value": 950.0, "limit": 1000.0},
+    {"label": "sensors_oct", "value": 4300.0, "limit": 5000.0},
+    {"label": "users_export", "value": 2100.0, "limit": 2000.0},
+]
 
 
 # =============================================================== PROCESS + OUTPUT
@@ -42,7 +68,9 @@ records = []   # replace with your code
 #    Excellent : also keep a running count of how many were OVER LIMIT, and
 #                print that once, after the loop ends.
 
-# your loop goes here
+for record in records:
+    difference, percent, status = check_record(record["value"], record["limit"])
+    print_report(record["label"], record["value"], record["limit"], difference, percent, status)
 
 
 # ==========================================================================
