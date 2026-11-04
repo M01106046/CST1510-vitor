@@ -2,9 +2,9 @@
 RECORD CHECK  -  my version
 ===========================
 
-Name  :
-Lane  :  AI / Cyber / IT      (delete two)
-Date  :
+Name  : Vitor Gomes
+Lane  :  AI
+Date  : 04/11/2026
 
 Run it:   python template.py
 
@@ -19,7 +19,7 @@ import pandas as pd
 #    plus at least 5 data rows: label,value,limit (or your lane's own field
 #    names - same shape, different words).
 
-df = None   # replace with pd.read_csv("your_file.csv")
+df = pd.read_csv("template.csv")
 
 
 # ================================================================= PROCESS
@@ -28,7 +28,10 @@ df = None   # replace with pd.read_csv("your_file.csv")
 #    Typical and above: also add a "status" column using .apply() with a
 #    lambda - "OVER LIMIT" (100%+), "WARNING" (90%+), otherwise "OK".
 
-# your column(s) go here
+df["percent"] = (df["value"] / df["limit"]) * 100
+df["status"] = df.apply(   
+    lambda row: "OVER LIMIT" if row["percent"] > 100 else "WARNING" if row["percent"] > 90 else "OK"
+)
 
 
 # ================================================================== OUTPUT
@@ -41,7 +44,7 @@ df = None   # replace with pd.read_csv("your_file.csv")
 #                the full DataFrame to a new CSV with .to_csv(), and save
 #                one bar chart of the counts per status.
 
-print(df)
+print(df[df["status"] == "OK"])
 
 
 # ==========================================================================
