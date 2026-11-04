@@ -19,7 +19,7 @@ import pandas as pd
 #    plus at least 5 data rows: label,value,limit (or your lane's own field
 #    names - same shape, different words).
 
-df = pd.read_csv("template.csv")
+df = pd.read_csv("LAB/template.csv")
 
 
 # ================================================================= PROCESS
@@ -29,9 +29,7 @@ df = pd.read_csv("template.csv")
 #    lambda - "OVER LIMIT" (100%+), "WARNING" (90%+), otherwise "OK".
 
 df["percent"] = (df["value"] / df["limit"]) * 100
-df["status"] = df.apply(   
-    lambda row: "OVER LIMIT" if row["percent"] > 100 else "WARNING" if row["percent"] > 90 else "OK"
-)
+df["status"] = df.apply(lambda row: "OVER LIMIT" if row["percent"] > 100 else "WARNING" if row["percent"] > 90 else "OK", axis=1)
 
 
 # ================================================================== OUTPUT
@@ -44,7 +42,7 @@ df["status"] = df.apply(
 #                the full DataFrame to a new CSV with .to_csv(), and save
 #                one bar chart of the counts per status.
 
-print(df[df["status"] == "OK"])
+print(df[df["status"] != "OK"])
 
 
 # ==========================================================================
