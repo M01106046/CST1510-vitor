@@ -22,8 +22,17 @@ Delete these instructions as you replace them with your code.
 #    one-line docstring.
 
 # your function(s) go here
+def parse_line(raw_line):
+    """Cleans and parses a raw survey record into a dictionary."""
+    parts = raw_line.strip().lower().split(",")
 
+    data = {
+        "survey": parts[0].strip(),
+        "rating": int(parts[1].split("=")[1].strip()),
+        "age": int(parts[2].split("=")[1].strip())
+    }
 
+    return data
 # ====================================================================== INPUT
 # 2. Your raw, messy records - at least 5, deliberately varied in spacing
 #    and case. Match the shape to your lane:
@@ -35,7 +44,9 @@ Delete these instructions as you replace them with your code.
 #    Excellent: save these lines to a file and load them with open() /
 #    a for loop over the file, instead of writing them directly here.
 
-raw_records = []   # replace with your code
+raw_records = [
+    "  Survey_2026 , rating=4 , age=23  ",
+]
 
 
 # =============================================================== PROCESS + OUTPUT
@@ -47,7 +58,8 @@ raw_records = []   # replace with your code
 #                how many flagged.
 
 for raw_record in raw_records:
-    pass   # replace with your code
+    data = parse_line(raw_record)
+    print(data)
 
 
 # ==========================================================================
