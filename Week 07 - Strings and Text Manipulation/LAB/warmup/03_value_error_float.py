@@ -6,4 +6,4 @@ hostname_part, rest = raw_line.split(",", 1)
 
 for piece in rest.split(","):
     key, value = piece.split("=")
-    print(key, float(value))
+    print(key,value)
